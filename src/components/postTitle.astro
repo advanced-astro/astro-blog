@@ -4,7 +4,7 @@ import '@fontsource/montserrat/900.css'
 
 interface Props {
 	title: string
-	date: string
+	date: Date
 }
 
 const { title, date } = Astro.props
@@ -12,8 +12,8 @@ const { title, date } = Astro.props
 const lightStart = new Color('lab(63 59.32 -1.47)')
 const lightEnd = new Color('lab(33 42.09 -43.19)')
 const lightRange = lightStart.range(lightEnd)
-const darkStart = new Color('lab(81 32.36 -7.02)')
-const darkEnd = new Color('lab(78 19.97 -36.75)')
+const darkStart = new Color('oklch(0.85 0.1 0)')
+const darkEnd = new Color('oklch(0.82 0.1 0)9)')
 const darkRange = darkStart.range(darkEnd)
 const today = new Date()
 const timeSinceFirstPost = (today.valueOf() - new Date(2018, 10, 30).valueOf()).valueOf()
@@ -27,6 +27,7 @@ const staleness = timeSinceThisPost / timeSinceFirstPost
     "--lightLink": lightRange(staleness).toString(),
     "--darkLink": darkRange(staleness).toString(),
   }}
+	transition:name={title}
 >
   {title}
 </h2>

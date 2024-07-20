@@ -2,17 +2,20 @@
 import '@/styles/globals.css'
 import '@fontsource/merriweather'
 import { ViewTransitions } from 'astro:transitions'
+import BaseHead from '@/components/BaseHead.astro'
 import LoadingIndicator from 'astro-loading-indicator/component'
+import { Site } from '@/consts'
+const desc = Site.description
+const lang = Site.lang
+const title = Site.title
+const token = '7797be8d-4452-4a49-8fb8-13251f192b10'
 ---
 
 <!doctype html>
-<html lang="en">
+<html {lang}>
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+		<BaseHead {desc} {title}/>
+		<script is:inline src="s/bm.js" data-token={token} async type="text/partytown"></script>
     <ViewTransitions />
     <LoadingIndicator color="#7e22ce" />
   </head>

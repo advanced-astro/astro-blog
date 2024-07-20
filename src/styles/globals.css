@@ -1,50 +1,53 @@
+@import 'more-modern-css-reset';
+@import '_font.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --text: #222;
-  --title: #222;
-  --bg: white;
-  --code-bg: #232936;
-  --link: #d23669;
-  --inlineCode-bg: rgba(255, 229, 100, 0.2);
-  --inlineCode-text: #1a1a1a;
-  --pink: lab(63 59.32 -1.47);
-  --purple: lab(33 42.09 -43.19);
+  --text: oklch(0.25 0 89.88);
+  --title: oklch(0.25 0 89.88);
+  --bg: oklch(1 0 89.88);
+  --code-bg: oklch(28% 0 270);
+  --link: oklch(0.58 0.19 5.51);
+  --inlineCode-bg: oklch(92% 0.1 98 / 0.2);
+  --inlineCode-text: oklch(22% 0 0);
+  --pink: oklch(0.7 0.18 0);
+  --purple: oklch(0.44 0.16 0);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: rgba(255, 255, 255, 0.88);
-    --title: white;
-    --bg: rgb(40, 44, 53);
-    --code-bg: #191d27;
-    --link: #ffa7c4;
-    --inlineCode-bg: rgba(115, 124, 153, 0.2);
-    --inlineCode-text: #e6e6e6;
-    --pink: lab(81 32.36 -7.02);
-    --purple: lab(78 19.97 -36.75);
+    --text: oklch(100% 0 0 / 0.9);
+    --title: oklch(1 0 89.88);
+    --bg: oklch(29% 0 270);
+    --code-bg: oklch(23% 0 270);
+    --link: oklch(82% 0.1 360);
+    --inlineCode-bg: oklch(59% 0 270 / 0.2);
+    --inlineCode-text: oklch(92% 0 0);
+    --pink: oklch(0.85 0.1 0);
+    --purple: oklch(0.82 0.1 0);
   }
 }
 @property --myColor1 {
   syntax: "<color>";
-  initial-value: #222;
+  initial-value: oklch(25% 0 0);
   inherits: false;
 }
 @property --myColor2 {
   syntax: "<color>";
-  initial-value: #222;
+  initial-value: oklch(25% 0 0);
   inherits: false;
 }
 @media (prefers-color-scheme: dark) {
   @property --myColor1 {
     syntax: "<color>";
-    initial-value: rgba(255, 255, 255, 0.88);
+    initial-value: oklch(100% 0 0 / 0.9);
     inherits: false;
   }
   @property --myColor2 {
     syntax: "<color>";
-    initial-value: rgba(255, 255, 255, 0.88);
+    initial-value: oklch(100% 0 0 / 0.9);
     inherits: false;
   }
 }

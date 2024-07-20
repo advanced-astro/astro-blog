@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content'
+import BlogLayout from '@/layouts/blogLayout.astro'
+import '@/styles/markdown.css'
+// import type { MarkdownInstance } from "astro";
+// import fs from "node:fs";
+import { getPostWords, readingTime } from '@/utils/utils'
+import '@fontsource/montserrat/900.css'
+import { getPosts } from '@/lib/getPosts'
+import FormattedDate from '@/components/FormattedDate.astro'
+
+export async function getStaticPaths() {
+	const posts = getPosts(await getCollection('blog'))
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}))
+}
+
+const { body, data } = Astro.props
+const words = getPostWords(body)
+const readTime = readingTime(words)
+
+const post = Astro.props
+const { Content } = await post.render()
+---
+
+<BlogLayout
+  ><article>
+    <h1 transition:name=`${data.title}`>
+      {data.title}
+    </h1>
+    <p class="mb-6 mt-2 text-[13px] text-gray-700 dark:text-gray-300">
+        <FormattedDate date={data.pubDate} />
+    </p>
+
+    <p class="mt-2 text-[13px] text-gray-700 dark:text-gray-300">
+      word count：{words}
+    </p>
+    <p class="mt-2 text-[13px] text-gray-700 dark:text-gray-300">
+      estimated reading time：{readTime}minute
+    </p>
+    <div class="markdown mt-10">
+		<Content />
+  </article>
+</BlogLayout>
+
+<style>
+	h1 {
+		font-size: 40px;
+		font-weight: bold;
+		line-height: 44px;
+		font-family: 'Montserrat', sans-serif;
+		transition: 0.2s ease-in-out;
+	}
+</style>

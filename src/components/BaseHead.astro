@@ -1,0 +1,54 @@
+---
+// Import the global.css file here so that it is included on
+// all pages through the use of the <BaseHead /> component.
+import '@/styles/global.css'
+
+interface Props {
+	title: string
+	desc: string
+	img?: string
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+
+const { title, desc, img = '/i/social.png' } = Astro.props
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="ToxicFlags RSS Feed" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Font preloads -->
+<link rel="preload" href="/f/atkinson-hyper-pro-regular-subset.woff2" as="font" type="font/woff2" crossorigin />
+<!-- <link rel="preload" href="/f/atkinson-hyperlegible-v11-latin-regular.woff2" as="font" type="font/woff2" crossorigin /> -->
+<link rel="preload" href="/f/comfortaa-v45-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+<!-- <link rel="preload" href="/f/noto-emoji-v50-emoji-regular.woff2" as="font" type="font/woff2" crossorigin /> -->
+<!-- <link rel="preload" href="/fonts/shrikhand-v15-latin-regular.woff2" as="font" type="font/woff2" crossorigin /> -->
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={desc} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={desc} />
+<meta property="og:image" content={new URL(img, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={desc} />
+<meta property="twitter:image" content={new URL(img, Astro.url)} />
+
+<!-- Thems -->
+<meta name="theme-color" content="#7e22ce" />
