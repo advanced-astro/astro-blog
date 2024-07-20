@@ -11,7 +11,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-blog-x2sw.vercel.app",
+  site: "https://aweblog.vercel.app",
   integrations: [tailwind(), react(), mdx()],
   image: {
     domains: ["https://github.com"],

@@ -1,12 +1,14 @@
 {
-  "name": "astro-blog",
+  "name": "astro-weblog",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview",
+    "preview": "vercel deploy",
+    "publish": "vercel deploy --prod",
+		"prepublish": "biome check . && astro check",
     "astro": "astro"
   },
   "dependencies": {
